@@ -32,14 +32,21 @@
 	<script>hljs.initHighlightingOnLoad();</script>
 
 	<!-- Auto resize image -->
-<style>
-div img {
- max-width:100%;
- width:{
- this.style.width=(this.offsetWidth>document.body.clientWidth*10/10)?"100%":"auto");
- overflow:hidden;
- }
-}
-</style>
+	<style>
+	div img {
+		max-width: 100%;
+		width: {
+			this.style.width=(this.offsetWidth>document.body.clientWidth*10/10)?"100%":"auto");
+			overflow:hidden;
+		}
+	}
+	</style>
+
+	<!-- 设置背景色 -->
+	<style>
+	body {
+		background-color: #f9f9f9;
+	}
+	</style>
 
 </head>
