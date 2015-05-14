@@ -31,6 +31,9 @@
 	<script src="{{ site.baseurl}}/public/highlight/highlight.pack.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 
+	<!-- jquery -->
+	<script src="{{ site.baseurl}}/public/jquery/jquery-2.1.4.min.js"></script>
+
 	<!-- Auto resize image -->
 	<style>
 	div img {
@@ -49,4 +52,43 @@
 	}
 	</style>
 
+	<!-- 目录 start -->
+	<style>
+	/*导航*/
+	.BlogAnchor {
+	    background: #f4f7f9;
+	    padding: 10px;
+	    line-height: 180%;
+	}
+	.BlogAnchor p {
+	    font-size: 18px;
+	    color: #15a230;
+	    margin-bottom: 0.3em;
+	}
+	.BlogAnchor .AnchorContent {
+	    padding: 5px 0px;
+	}
+	.BlogAnchor li{
+	    text-indent: 20px;
+	    font-size: 14px;
+	}
+	#AnchorContentToggle {
+	    font-size: 13px;
+	    font-weight: normal;
+	    color: #FFF;
+	    display: inline-block;
+	    line-height: 20px;
+	    background: #5cc26f;
+	    font-style: normal;
+	    padding: 1px 8px;
+	    margin-right: 10px;
+	}
+	.BlogAnchor a:hover {
+	    color: #5cc26f;
+	}
+	.BlogAnchor a {
+	    text-decoration: none;
+	}
+	</style>
+	<!-- 目录 end -->
 </head>

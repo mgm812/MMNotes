@@ -5,8 +5,45 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <span class="post-date">{{ page.date | date_to_string }}</span>
+<!-- 目录 start -->
+  <div class="BlogAnchor">
+	  <p><b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录[-]</b></p>
+	  <div class="AnchorContent" id="AnchorContent"> </div>
+  </div>
+<!-- 目录 end -->
   {{ content }}
 </div>
+
+<!-- 目录 start -->
+<script type="text/javascript">
+  //在文章中查找title并填充到div AnchorContent中
+  $(".post").find("h2,h3,h4,h5,h6").each(function(i,item){
+      var tag = $(item).get(0).localName;
+      $(item).attr("id","wow"+i);
+      $("#AnchorContent").append('<li><a class="new'+tag+' anchor-link" onclick="return false;" href="#" link="#wow'+i+'">'+$(this).text()+'</a></li>');
+      $(".newh2").css("margin-left",0);
+      $(".newh3").css("margin-left",20);
+      $(".newh4").css("margin-left",40);
+      $(".newh5").css("margin-left",60);
+      $(".newh6").css("margin-left",80);
+  });
+  $("#AnchorContentToggle").click(function(){
+      var text = $(this).html();
+      if(text=="目录[-]"){
+          $(this).html("目录[+]");
+          $(this).attr({"title":"展开"});
+      }else{
+          $(this).html("目录[-]");
+          $(this).attr({"title":"收起"});
+      }
+      $("#AnchorContent").toggle();
+  });
+  
+  $(".anchor-link").click(function(){
+      $("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 1000);
+  });
+</script>
+<!-- 目录 end -->
 
 <!-- UY BEGIN -->
 <!-- <div id="uyan_frame"></div> -->
