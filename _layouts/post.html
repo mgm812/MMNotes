@@ -1,0 +1,137 @@
+---
+layout: default
+---
+
+<div class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <span class="post-date">{{ page.date | date_to_string }}</span>
+<!-- 置顶 start -->
+  <div id="totop" style="position:fixed;bottom:0px;right:2%;cursor: pointer;">
+  <a title="返回顶部"><img src="{{ site.baseurl}}/public/scrollup.png" /></a>
+  </div>
+<script type="text/javascript">
+  (function($) { 
+  	// When to show the scroll link
+  	// higher number = scroll link appears further down the page   
+  	var upperLimit = 1000;
+	
+  	// Our scroll link element
+  	var scrollElem = $('#totop');
+   
+  	// Scroll to top speed
+  	var scrollSpeed = 500;
+   
+  	// Show and hide the scroll to top link based on scroll position   
+  	scrollElem.hide();
+  	$(window).scroll(function () {            
+  		var scrollTop = $(document).scrollTop();       
+  		if ( scrollTop > upperLimit ) {
+  			$(scrollElem).stop().fadeTo(300, 1); // fade back in           
+  		}else{       
+  			$(scrollElem).stop().fadeTo(300, 0); // fade out
+  		}
+  	});
+
+  	// Scroll to top animation on click
+  	$(scrollElem).click(function(){
+  		$('html, body').animate({scrollTop:0}, scrollSpeed); return false;
+  	});
+  })(jQuery);
+</script>
+<!-- 置顶 end -->
+<!-- 目录 start -->
+  <div class="BlogAnchor">
+	  <p><b id="AnchorContentToggle" title="收起" style="cursor:pointer;">目录[-]</b></p>
+	  <div class="AnchorContent" id="AnchorContent"> </div>
+  </div>
+<!-- 目录 end -->
+  {{ content }}
+</div>
+
+<!-- 目录 start -->
+<script type="text/javascript">
+  //在文章中查找title并填充到div AnchorContent中
+  $(".post").find("h2,h3,h4,h5,h6").each(function(i,item){
+      var tag = $(item).get(0).localName;
+      $(item).attr("id","wow"+i);
+      $("#AnchorContent").append('<li><a class="new'+tag+' anchor-link" onclick="return false;" href="#" link="#wow'+i+'">'+$(this).text()+'</a></li>');
+      $(".newh2").css("margin-left",0);
+      $(".newh3").css("margin-left",20);
+      $(".newh4").css("margin-left",40);
+      $(".newh5").css("margin-left",60);
+      $(".newh6").css("margin-left",80);
+  });
+  $("#AnchorContentToggle").click(function(){
+      var text = $(this).html();
+      if(text=="目录[-]"){
+          $(this).html("目录[+]");
+          $(this).attr({"title":"展开"});
+      }else{
+          $(this).html("目录[-]");
+          $(this).attr({"title":"收起"});
+      }
+      $("#AnchorContent").toggle();
+  });
+  
+  $(".anchor-link").click(function(){
+      $("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 1000);
+  });
+</script>
+<!-- 目录 end -->
+
+<!-- UY BEGIN -->
+<!-- <div id="uyan_frame"></div> -->
+<!-- <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1937532"></script> -->
+<!-- UY END -->
+
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ site.url }}{{ page.url }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"mingminy"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share?uid=1937532" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1402141823603589" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<br/><br/>
+<a href="javascript:history.back()"><<返回</a>
+
+<div class="related">
+  <h2>相关文章</h2>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <h3>
+          <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

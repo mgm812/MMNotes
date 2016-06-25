@@ -1,0 +1,33 @@
+# mmy setting
+baseurl:            
+excerpt_separator:  <input type='hidden'>
+
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+redcarpet:
+  extensions: [
+  tables,
+  autolink,
+  fenced_code_blocks,
+  with_toc_data
+  ]
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            木木
+tagline:          '学习 & 生活'
+description:      '<a href="https://github.com/mmy812" target="_blank">@mmy</a><br/><br/>Blog of MingMinY.com'
+url:              http://m.mingminy.com
+paginate:         5
+
+author:
+  name:           'Robert'
+  email:          'ymm.812@gmail.com'
+
+# Custom vars
+version:          1.0.0
+
+github:           https://github.com/mmy812
